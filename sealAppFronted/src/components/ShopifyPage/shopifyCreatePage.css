@@ -1,0 +1,26 @@
+.create__page{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: black;
+    border-radius: 50px;
+    font-weight: 900;
+    margin-top: 50px;
+}
+
+.create__page {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: black;
+    border-radius: 50px;
+    font-weight: 900;
+    display: block;
+    margin-top: 50px;
+    max-width: fit-content;
+    margin: 20px auto;
+    cursor: pointer;
+    
+}   

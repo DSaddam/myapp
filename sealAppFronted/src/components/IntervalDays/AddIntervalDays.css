@@ -1,0 +1,84 @@
+.tags-input-container {
+    border: 2px solid #000;
+    padding: 0.5em;
+    border-radius: 3px;
+    width: min(80vw, 600px);
+    margin-top: 1em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin: 0px auto;
+}
+
+.tag-item {
+    background-color: rgb(218, 216, 216);
+    padding: 0px 4px 0px 6px;
+    border-radius: 20px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    font-weight: 800;
+    align-items: center;
+}
+
+.tags-input-container {
+    position: relative;
+}
+.tags-input-container svg {
+    position: absolute;
+    top: 23px;
+}
+.tag-item .close{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(48, 48, 48);
+    color: #fff;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: .5em;
+    font-size: 18px;
+    padding-bottom: 3px;
+    cursor: pointer;
+}
+.interval__days {
+    font-size: 30px;
+    margin: 20px 0px;
+}
+::placeholder {
+    font-size: 20px;
+    font-weight: 700;
+}
+.tags-input {
+    flex-grow: 1;
+    padding: 0.5em 15px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 1;
+ }
+
+button.add-button {
+    color: white;
+    background: green;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.ineterval__days__content {
+    padding: 0.5em;
+    border-radius: 3px;
+    width: min(80vw, 646px);
+    margin-top: 1em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    /* border: 2px solid #000; */
+    margin: 0px auto;
+}

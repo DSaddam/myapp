@@ -1,0 +1,54 @@
+/* Tabs.css */
+
+.tabs {
+  width: 100%;
+  background-color: rgb(255 255 250);
+  margin: 0px auto;
+  height: 100vh;
+  overflow: auto;
+  /* width: 1320px; */
+}
+  
+.tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+  
+.tab-buttons button {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 5px;
+    border: 0;
+    outline: 0;
+    background: none;
+    border-radius: 0 !important;
+}
+  
+  .tab-buttons button.active {
+    color: #000;
+    border-bottom:3px solid maroon;
+  }
+  
+  .tab-content {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  .tab-buttons button:hover {
+   border-bottom: 3px solid rgb(153 158 164);
+   background-color: unset;
+  }
+  .search-container>input {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border: 0.0625rem solid rgb(201 204 207);
+    margin-bottom: 15px;
+}

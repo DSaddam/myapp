@@ -1,0 +1,98 @@
+.MainDash {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    background-color: #343a40;
+    padding: 0px 0px 30px;
+    width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    .MainDash{
+        justify-content:flex-start;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px)
+{
+    .MainDash{
+        align-items: center;
+    }
+}
+/* ==================== input switch style code ==============================*/
+/* styles.css */
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    display: none;
+  }
+  
+  /* Style the toggle switch container */
+  label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Style the toggle slider */
+  .toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+  }
+  
+  /* Style the toggle slider when the toggle is on */
+  input[type="checkbox"]:checked + .toggle-slider {
+    background-color: #007bff;
+  }
+  
+  /* Style the round handle of the toggle switch */
+  .toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white;
+    top: 4px;
+    left: 4px;
+    transition: transform 0.4s;
+  }
+  
+  /* Style the round handle when the toggle is on */
+  input[type="checkbox"]:checked + .toggle-slider::before {
+    transform: translateX(26px);
+  }
+  
+
+  .MaindashboardSlide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid white;
+    padding: 25px 20px 0px;
+}
+.MainDashConetent {
+    width: 100%;
+  }
+  .MainDashConetent>h1 {
+    text-align: center;
+    font-size: 22px;
+    margin: 14px 0px;
+  }
+  .MaindashboardSlide>h3 {
+    font-size: 28px;
+}
+span.app-brand-logo.demo {
+    width: 43px;
+}
+/* ==================== input switch style code ==============================*/

@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b0ee247f.css",
+    "main.js": "/static/js/main.cafb4456.js",
+    "static/media/SealsubscriptionApp-03.png": "/static/media/SealsubscriptionApp-03.a4a51e5e47acc8eee12d.png",
+    "static/media/SealsubscriptionApp-02.png": "/static/media/SealsubscriptionApp-02.01cbc0c19dbae9e6a2e0.png",
+    "static/media/SealsubscriptionApp-05.png": "/static/media/SealsubscriptionApp-05.1728ae9a01366015cb60.png",
+    "static/media/SealsubscriptionApp-06.png": "/static/media/SealsubscriptionApp-06.756676adaf9848f34bc1.png",
+    "static/media/SealsubscriptionApp-07.png": "/static/media/SealsubscriptionApp-07.c3992d4fe1de5c016bc1.png",
+    "static/media/SealsubscriptionApp-11.png": "/static/media/SealsubscriptionApp-11.f9b415ddc737f10291e8.png",
+    "static/media/SealsubscriptionApp-09.png": "/static/media/SealsubscriptionApp-09.6e0b80de482432591524.png",
+    "static/media/SealsubscriptionApp-04.png": "/static/media/SealsubscriptionApp-04.75e3404f4380159cb655.png",
+    "static/media/SealsubscriptionApp-08.png": "/static/media/SealsubscriptionApp-08.0c79534f1611b4a118ac.png",
+    "static/media/SealsubscriptionApp-10.png": "/static/media/SealsubscriptionApp-10.b659480654c616916a92.png",
+    "static/media/SealsubscriptionApp-01.png": "/static/media/SealsubscriptionApp-01.15f9e5feee449998b539.png",
+    "static/media/SealsubscriptionApp-12.png": "/static/media/SealsubscriptionApp-12.842215c2da74f1ea917e.png",
+    "index.html": "/index.html",
+    "main.b0ee247f.css.map": "/static/css/main.b0ee247f.css.map",
+    "main.cafb4456.js.map": "/static/js/main.cafb4456.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b0ee247f.css",
+    "static/js/main.cafb4456.js"
+  ]
+}
