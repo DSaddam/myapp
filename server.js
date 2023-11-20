@@ -52,7 +52,7 @@ const apisecret = SHOPIFY_API_SECRET;
 const scopes =
   "read_orders,read_content,write_content,write_orders,read_script_tags,write_script_tags,read_products,write_products,read_customers,write_customers,read_shipping,write_shipping ,read_themes,write_themes,read_checkouts,write_checkouts";
 
-const forwardingaddress = "https://21f5-2405-201-6030-70a2-5dde-cde3-d8d7-f98c.ngrok-free.app";
+const forwardingaddress = "https://myapp-1754.onrender.com";
 
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
