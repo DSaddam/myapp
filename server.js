@@ -77,7 +77,7 @@ app.get("/shopify", (req, res) => {
   getEmbedUrl.push(req.url);
   const shop = req.query.shop;
   if (shop) {
-    const state = nonce();remove state cookies
+    const state = nonce();
     //  redirect
     const redirectURL = forwardingaddress + "/shopify/callback";
     // Install
