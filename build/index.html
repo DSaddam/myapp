@@ -19,10 +19,13 @@
     <title>Chamonix | Developer</title>
     <script defer="defer" src="/static/js/main.cafb4456.js"></script>
     <link href="/static/css/main.b0ee247f.css" rel="stylesheet">
-    <script src="https://unpkg.com/@shopify/app-bridge@2"></script>
-    <script src="https://unpkg.com/@shopify/app-bridge-utils@2"></script>
-    <script>
-        var base_url    = 'https://21f5-2405-201-6030-70a2-5dde-cde3-d8d7-f98c.ngrok-free.app/';
+    <!-- <script src="https://unpkg.com/@shopify/app-bridge@2"></script>
+    <script src="https://unpkg.com/@shopify/app-bridge-utils@2"></script> -->
+    <script src="https://unpkg.com/@shopify/app-bridge@3"></script>
+    <script src="https://unpkg.com/@shopify/app-bridge-utils@3"></script>
+    <script src="https://unpkg.com/@shopify/app-bridge@3/actions"></script>
+    <!-- <script>
+        var base_url    = 'https://myapp-1754.onrender.com/';
         var AppBridge   = window['app-bridge'];
         var createApp   = AppBridge.createApp;
         var host        = 'unimedindia.myshopify.com'; 
@@ -34,8 +37,69 @@
             shopOrigin: host,
             forceRedirect: true
         });
-    </script>
+    </script> -->
+<script>
+    var base_url    = 'https://myapp-1754.onrender.com/';
+    var AppBridge   = window['app-bridge'];  
+    var AppBridgeUtils = window['app-bridge-utils'];
+    var createApp   = AppBridge.createApp;
+    var host        = 'unimedindia.myshopify.com'; 
+    var hosts        = 'YWRtaW4uc2hvcGlmeS5jb20vc3RvcmUvdW5pbWVkaW5kaWE'; 
+    var apiKey      = 'e1e6962fa4dd47b750538f4173d71497';
 
+
+    console.log("api_key="+apiKey);
+    // var app = createApp ({
+    //     apiKey: apiKey,
+    //     shop: host, 
+    //     shopOrigin: host,
+    //     forceRedirect: true
+    // });
+        var adminhost = new URLSearchParams(location.search).get("host");
+        const config = {
+        apiKey: apiKey,
+        host: ((adminhost != null) ? adminhost : btoa(host+'/admin') ),
+        // host: btoa(host+'/admin'),
+        forceRedirect: true
+    };
+    const app = AppBridge.createApp(config);
+  
+ 
+var ContextualSaveBar = AppBridge.actions.ContextualSaveBar;
+
+var contextualSaveBar = ContextualSaveBar.create(app, {
+  show: {
+    disabled: false,
+    loading: false,
+  },  hide: {
+    disabled: false,
+    loading: false,
+  },
+    saveAction: {
+    disabled: false,
+    loading: false,
+  },
+  discardAction: {
+    disabled: false,
+    loading: false,
+    discardConfirmationModal: true,
+  },
+});
+
+  contextualSaveBar.set({saveAction: {loading: false}});
+   contextualSaveBar.dispatch(ContextualSaveBar.Action.HIDE);
+ 
+
+const toastOptions = {
+  message: 'Setting Saved.',
+  duration: 10000   
+};
+var Toast = AppBridge.actions.Toast;
+
+ 
+var toastNotice = Toast.create(app, toastOptions);
+ 
+</script>
 </head>
 
 <body><noscript>You need to enable JavaScript to run this app.</noscript>
