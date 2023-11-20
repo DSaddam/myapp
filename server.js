@@ -155,7 +155,6 @@ app.get("/shopify/callback", async (req, res) => {
 
                 let RedirectEmbedurl = parsedUrl.toString();
                  res.redirect(RedirectEmbedurl);
-                 res.clearCookie('state');
           })
           .catch((error) => {
             res.status(error.statusCode).send(error.error.error_description);
