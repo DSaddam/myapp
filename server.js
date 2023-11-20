@@ -94,6 +94,7 @@ app.get("/shopify", (req, res) => {
       redirectURL;
 
     // res.cookie("state", state);
+    console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn>>>>",state);
     res.redirect(shopifyURL);
   } else {
     return res.status(400).send('Missing "Shop Name" parameter!! please add');
