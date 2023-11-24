@@ -162,6 +162,7 @@ app.get("/shopify/callback", async (req, res) => {
                 parsedUrl.pathname = parsedUrl.pathname.substring(parsedUrl.pathname.indexOf('/', 1));
 
                 let RedirectEmbedurl = parsedUrl.toString();
+                res.header('Content-Security-Policy', "frame-ancestors 'admin.shopify.com'")
                  res.redirect(RedirectEmbedurl);
           })
           .catch((error) => {
