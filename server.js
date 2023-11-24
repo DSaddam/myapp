@@ -25,6 +25,7 @@ const fs = require("fs");
 // const path = require('path');
 // const multer = require('multer');
 var cors = require("cors");
+var helmet = require("helmet");
 const { json } = require("express");
 dotenv.config();
 const bodyParser = require("body-parser");
@@ -38,6 +39,14 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.options("*", cors());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      // other directives
+      frameAncestors: ["'admin.shopify.com'"] // Compliant
+    }
+  })
+);
 
 const staticPath = path.join(__dirname, "build");
 app.use(express.static(staticPath));
