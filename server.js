@@ -39,14 +39,14 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.options("*", cors());
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      // other directives
-      frameAncestors: ["'admin.shopify.com'"] // Compliant
-    }
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       // other directives
+//       frameAncestors: ["'admin.shopify.com'"] // Compliant
+//     }
+//   })
+// );
 
 const staticPath = path.join(__dirname, "build");
 app.use(express.static(staticPath));
@@ -162,7 +162,6 @@ app.get("/shopify/callback", async (req, res) => {
                 parsedUrl.pathname = parsedUrl.pathname.substring(parsedUrl.pathname.indexOf('/', 1));
 
                 let RedirectEmbedurl = parsedUrl.toString();
-                res.header('Content-Security-Policy', "frame-ancestors '*'")
                  res.redirect(RedirectEmbedurl);
           })
           .catch((error) => {
