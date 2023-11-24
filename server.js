@@ -38,7 +38,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.options("*", cors());
+app.options("*", cors());
 // app.use(
 //   helmet.contentSecurityPolicy({
 //     directives: {
@@ -136,6 +136,7 @@ app.get("/shopify/callback", async (req, res) => {
       client_secret: apisecret,
       code,
     };
+    res.header('Content-Security-Policy', "frame-ancestors 'admin.shopify.com'")
 
     request
       .post(accessTokenRequestUrl, { json: accessTokenPayload })
@@ -162,7 +163,7 @@ app.get("/shopify/callback", async (req, res) => {
                 parsedUrl.pathname = parsedUrl.pathname.substring(parsedUrl.pathname.indexOf('/', 1));
 
                 let RedirectEmbedurl = parsedUrl.toString();
-                res.header('Content-Security-Policy', "frame-ancestors 'admin.shopify.com'")
+               
                  res.redirect(RedirectEmbedurl);
           })
           .catch((error) => {
@@ -177,6 +178,12 @@ app.get("/shopify/callback", async (req, res) => {
   }
   // res.end();
 });
+
+app.get('/test', function(req, res) {
+  console.log('test');
+  res.header('Content-Security-Policy', "frame-ancestors 'admin.shopify.com'")
+  res.end('ok');
+})
 
 function GetAccessToken(access_token_value, shop_domain) {
   DynamicAccessToken.push(access_token_value);
