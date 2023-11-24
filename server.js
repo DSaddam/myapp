@@ -37,8 +37,10 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
-app.options("*", cors());
+app.use(cors({
+  origin:"*"
+}));
+// app.options("*", cors());
 
 const staticPath = path.join(__dirname, "build");
 app.use(express.static(staticPath));
