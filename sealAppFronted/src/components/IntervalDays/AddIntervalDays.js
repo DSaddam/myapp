@@ -23,7 +23,7 @@ function TagsInput() {
   };
   useEffect(() => {
     setCurrentURL(window.location.hostname);
-    localStorage.setItem("tempStoreName", window.location.hostname);
+    // localStorage.setItem("tempStoreName", window.location.hostname);
 
     fetch("https://dynamic-auto-shipp-app.onrender.com/getadd/addIntervalDays")
       .then((response) => response.json())
