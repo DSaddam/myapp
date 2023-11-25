@@ -48,6 +48,18 @@ app.options("*", cors());
 //   })
 // );
 
+app.use((req, res) => {
+  const shop = req.query.shop;
+  console.log('test')
+  if (shop) {
+    // Set the `frame-ancestors` header on the response
+    res.setHeader(
+      'Content-Security-Policy',
+      `frame-ancestors https://${shop} https://admin.shopify.com;`
+    );
+  }
+});
+
 const staticPath = path.join(__dirname, "build");
 app.use(express.static(staticPath));
 // app.use('/shopify/callback', myProxy)
@@ -60,7 +72,7 @@ const apisecret = SHOPIFY_API_SECRET;
 const scopes =
   "read_orders,read_content,write_content,write_orders,read_script_tags,write_script_tags,read_products,write_products,read_customers,write_customers,read_shipping,write_shipping ,read_themes,write_themes,read_checkouts,write_checkouts";
 
-const forwardingaddress = "https://8c25-42-105-212-53.ngrok-free.app";
+const forwardingaddress = "https://myapp-1754.onrender.com";
 
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
@@ -84,7 +96,7 @@ app.get("/shopify", (req, res) => {
   console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:====", req.url);
   getEmbedUrl.push(req.url);
   const shop = req.query.shop;
-  res.header('Content-Security-Policy', "frame-ancestors 'admin.shopify.com'")
+  // res.header('Content-Security-Policy', "frame-ancestors 'admin.shopify.com'")
   if (shop) {
     const state = nonce();
     //  redirect
@@ -137,7 +149,7 @@ app.get("/shopify/callback", async (req, res) => {
       client_secret: apisecret,
       code,
     };
-    res.header('Content-Security-Policy', "frame-ancestors 'admin.shopify.com'")
+    // res.header('Content-Security-Policy', "frame-ancestors 'admin.shopify.com'")
 
     request
       .post(accessTokenRequestUrl, { json: accessTokenPayload })
@@ -193,5 +205,5 @@ function GetAccessToken(access_token_value, shop_domain) {
 }
 
 app.listen(7709, () => {
-  console.log("running on port 7707");
+  console.log("running on port 7709");
 });
