@@ -47,6 +47,28 @@ app.options("*", cors());
 //     }
 //   })
 // );
+// ...
+
+app.use((req, res, next) => {
+  const shop = req.query.shop;
+
+  if (shop) {
+    // Set the `frame-ancestors` header based on the shop domain
+    const allowedDomains = [
+      `https://${shop}.myshopify.com/`,
+      'https://admin.shopify.com'
+    ];
+
+    res.setHeader(
+      'Content-Security-Policy',
+      `frame-ancestors ${allowedDomains.join(' ')};`
+    );
+  }
+
+  next();
+});
+
+// ...
 
 // app.use((req, res) => {
 //   const shop = req.query.shop;
@@ -96,13 +118,6 @@ app.get("/shopify", (req, res) => {
   console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:====", req.url);
   getEmbedUrl.push(req.url);
   const shop = req.query.shop;
-  if (shop) {
-    // Set the `frame-ancestors` header on the response
-    res.setHeader(
-      'Content-Security-Policy',
-      `frame-ancestors https://unimedindia.myshopify.com/ https://admin.shopify.com;`
-    );
-  }
   // res.header('Content-Security-Policy', "frame-ancestors 'admin.shopify.com'")
   if (shop) {
     const state = nonce();
@@ -138,14 +153,7 @@ app.get("/shopify/callback", async (req, res) => {
   // const stateCookie = cookie.parse(req.headers.cookie).shopState;
   // if (shopState !== stateCookie) {
   //   return res.status(400).send("request origin cannot be found");
-  console.log('test',shop)
-  if (shop) {
-    // Set the `frame-ancestors` header on the response
-    res.setHeader(
-      'Content-Security-Policy',
-      `frame-ancestors https://unimedindia.myshopify.com/ https://admin.shopify.com;`
-    );
-  }
+
   // }
   if (shop && hmac && code) {
     const Map = Object.assign({}, req.query);
