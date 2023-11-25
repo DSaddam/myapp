@@ -39,18 +39,18 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.options("*", cors());
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      // other directives
-      frameAncestors: ["'admin.shopify.com'"] // Compliant
-    }
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       // other directives
+//       frameAncestors: ["'admin.shopify.com'"] // Compliant
+//     }
+//   })
+// );
 
 // app.use((req, res) => {
 //   const shop = req.query.shop;
-//   console.log('test')
+//   console.log('test',shop)
 //   if (shop) {
 //     // Set the `frame-ancestors` header on the response
 //     res.setHeader(
@@ -72,7 +72,7 @@ const apisecret = SHOPIFY_API_SECRET;
 const scopes =
   "read_orders,read_content,write_content,write_orders,read_script_tags,write_script_tags,read_products,write_products,read_customers,write_customers,read_shipping,write_shipping ,read_themes,write_themes,read_checkouts,write_checkouts";
 
-const forwardingaddress = "https://f10a-2402-3a80-40c3-987a-fcc9-ac05-8419-271c.ngrok-free.app";
+const forwardingaddress = "https://testappchecker.onrender.com";
 
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
@@ -119,6 +119,8 @@ app.get("/shopify", (req, res) => {
 });
 
 app.get("/shopify/callback", async (req, res) => {
+    // const shop = req.query.shop;/
+
   const clientId = req.query.clientId; // Assuming you pass clientId as a query parameter
   // const { shop, hmac, code, shopState } = req.query;
   const { hmac, host, shop, code, timestamp } = req.query;
@@ -129,6 +131,14 @@ app.get("/shopify/callback", async (req, res) => {
   // const stateCookie = cookie.parse(req.headers.cookie).shopState;
   // if (shopState !== stateCookie) {
   //   return res.status(400).send("request origin cannot be found");
+  console.log('test',shop)
+  if (shop) {
+    // Set the `frame-ancestors` header on the response
+    res.setHeader(
+      'Content-Security-Policy',
+      `frame-ancestors https://${shop} https://admin.shopify.com;`
+    );
+  }
   // }
   if (shop && hmac && code) {
     const Map = Object.assign({}, req.query);
