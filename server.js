@@ -39,26 +39,26 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.options("*", cors());
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     directives: {
-//       // other directives
-//       frameAncestors: ["'admin.shopify.com'"] // Compliant
-//     }
-//   })
-// );
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      // other directives
+      frameAncestors: ["'admin.shopify.com'"] // Compliant
+    }
+  })
+);
 
-app.use((req, res) => {
-  const shop = req.query.shop;
-  console.log('test')
-  if (shop) {
-    // Set the `frame-ancestors` header on the response
-    res.setHeader(
-      'Content-Security-Policy',
-      `frame-ancestors https://${shop} https://admin.shopify.com;`
-    );
-  }
-});
+// app.use((req, res) => {
+//   const shop = req.query.shop;
+//   console.log('test')
+//   if (shop) {
+//     // Set the `frame-ancestors` header on the response
+//     res.setHeader(
+//       'Content-Security-Policy',
+//       `frame-ancestors https://${shop} https://admin.shopify.com;`
+//     );
+//   }
+// });
 
 const staticPath = path.join(__dirname, "build");
 app.use(express.static(staticPath));
@@ -72,7 +72,7 @@ const apisecret = SHOPIFY_API_SECRET;
 const scopes =
   "read_orders,read_content,write_content,write_orders,read_script_tags,write_script_tags,read_products,write_products,read_customers,write_customers,read_shipping,write_shipping ,read_themes,write_themes,read_checkouts,write_checkouts";
 
-const forwardingaddress = "https://myapp-1754.onrender.com";
+const forwardingaddress = "https://f10a-2402-3a80-40c3-987a-fcc9-ac05-8419-271c.ngrok-free.app";
 
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
@@ -204,6 +204,6 @@ function GetAccessToken(access_token_value, shop_domain) {
   DynamicShopName.push(shop_domain);
 }
 
-app.listen(7709, () => {
-  console.log("running on port 7709");
+app.listen(3000, () => {
+  console.log("running on port 3000");
 });
