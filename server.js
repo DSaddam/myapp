@@ -49,17 +49,9 @@ app.options("*", cors());
 // );
 const cspConfig = {
   directives: {
-    'frame-ancestors': ["'admin.shopify.com'"],
-    'default-src': ["'self'"],
-    'base-uri': ["'self'"],
-    'font-src': ["'self'", 'https:', 'data:'],
-    'form-action': ["'self'"],
-    'img-src': ["'self'", 'data:'],
-    'object-src': ["'none'"],
-    'script-src': ["'self'", 'https://unpkg.com'],
-    'script-src-attr': ["'none'"],
-    'style-src': ["'self'", 'https:', "'unsafe-inline'"],
-    'upgrade-insecure-requests': [],
+    // ... other directives ...
+    'frame-ancestors': ["'self'", 'https://unimedindia.myshopify.com/'],
+    // ... other directives ...
   },
 };
 
