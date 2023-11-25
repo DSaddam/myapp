@@ -39,14 +39,32 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.options("*", cors());
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      // other directives
-      frameAncestors: ["'admin.shopify.com'"] // Compliant
-    }
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       // other directives
+//       frameAncestors: ["'admin.shopify.com'"] // Compliant
+//     }
+//   })
+// );
+const cspConfig = {
+  directives: {
+    'frame-ancestors': ["'admin.shopify.com'"],
+    'default-src': ["'self'"],
+    'base-uri': ["'self'"],
+    'font-src': ["'self'", 'https:', 'data:'],
+    'form-action': ["'self'"],
+    'img-src': ["'self'", 'data:'],
+    'object-src': ["'none'"],
+    'script-src': ["'self'", 'https://unpkg.com'],
+    'script-src-attr': ["'none'"],
+    'style-src': ["'self'", 'https:', "'unsafe-inline'"],
+    'upgrade-insecure-requests': [],
+  },
+};
+
+// Use helmet.contentSecurityPolicy middleware with your CSP configuration
+app.use(helmet.contentSecurityPolicy(cspConfig));
 
 app.use((req, res, next) => {
   const shop = req.query.shop;
