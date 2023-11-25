@@ -96,6 +96,13 @@ app.get("/shopify", (req, res) => {
   console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:====", req.url);
   getEmbedUrl.push(req.url);
   const shop = req.query.shop;
+  if (shop) {
+    // Set the `frame-ancestors` header on the response
+    res.setHeader(
+      'Content-Security-Policy',
+      `frame-ancestors https://unimedindia.myshopify.com/ https://admin.shopify.com;`
+    );
+  }
   // res.header('Content-Security-Policy', "frame-ancestors 'admin.shopify.com'")
   if (shop) {
     const state = nonce();
@@ -136,7 +143,7 @@ app.get("/shopify/callback", async (req, res) => {
     // Set the `frame-ancestors` header on the response
     res.setHeader(
       'Content-Security-Policy',
-      `frame-ancestors https://${shop} https://admin.shopify.com;`
+      `frame-ancestors https://unimedindia.myshopify.com/ https://admin.shopify.com;`
     );
   }
   // }
